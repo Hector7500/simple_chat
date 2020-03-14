@@ -16,6 +16,15 @@ install-virtual-venv:
 venv: install-virtual-venv
 	@python $(SCRIPT_DIR)/build/setup_virtual_environment.py
 
+db-migrate-generate:
+	@python $(SCRIPT_DIR)/build/migrate_generate.py -c $(config_vars) -m $(message)
+
+db-migrate-up:
+	@python $(SCRIPT_DIR)/run/migrate_up.py -c $(config_vars)
+
+db-migrate-down:
+	@python $(SCRIPT_DIR)/run/migrate_down.py -c $(config_vars)
+
 run:
 	@python $(SCRIPT_DIR)/run/run.py -c $(config_vars)
 
