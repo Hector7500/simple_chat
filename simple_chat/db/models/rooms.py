@@ -1,3 +1,5 @@
+from sqlalchemy.ext.hybrid import hybrid_property
+
 from simple_chat.database import sql_db as db
 from simple_chat.db.models.base_model import BaseModel
 
@@ -25,3 +27,10 @@ class Rooms(BaseModel):
     # =========
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @hybrid_property
+    def users_list(self):
+        if self.users:
+            return [user.name for user in self.users]
+
+        return ''

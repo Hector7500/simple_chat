@@ -6,8 +6,6 @@ from simple_chat.database import sql_db as db
 
 
 class User:
-    model = Users
-
     def post(self):
         try:
             json_data = request.get_json(force=True)
@@ -23,5 +21,25 @@ class User:
         db.session.commit()
 
         return helper.successful_post_response('user')
+
+    def get(self):
+        try:
+            user_id = int(request.args['user_id'])
+
+        except Exception:
+
+            return helper.create_missing_fields_response('user_id')
+
+        user = db.session.query(Users).filter(Users.id == user_id).first()
+        user_data = {
+            'name': user.name,
+            'rooms': user.rooms_list,
+            'status': 200
+        }
+
+        return helper.response(user_data, 200)
+
+
+
 
 
