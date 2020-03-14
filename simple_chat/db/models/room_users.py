@@ -3,9 +3,7 @@ from simple_chat.db.models.base_model import BaseModel
 
 
 class RoomUsers(BaseModel):
-    # ============
-    # Properties ===
-    # ============
+    # Properties
     # None
 
     # Foreign keys

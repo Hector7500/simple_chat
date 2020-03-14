@@ -3,9 +3,7 @@ from simple_chat.db.models.base_model import BaseModel
 
 
 class Users(BaseModel):
-    # ============
-    # Properties ===
-    # ============
+    # Properties
     name = db.Column(db.String)
 
     # Foreign keys
