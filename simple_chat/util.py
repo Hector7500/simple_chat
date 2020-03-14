@@ -52,3 +52,14 @@ def source_env_vars(file_path):
         os.environ[values[0]] = values[1]
 
     proc.communicate()
+
+
+def get_db_str():
+    user = os.environ['DB_USER']
+    passwd = os.environ['DB_PASSWORD']
+    name = os.environ['DB_NAME']
+    port = os.environ['DB_PORT']
+    host = os.environ['DB_HOST']
+    db_connect_str = f'postgresql://{user}:{passwd}@{host}:{port}/{name}'
+
+    return db_connect_str

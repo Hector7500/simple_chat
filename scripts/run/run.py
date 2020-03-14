@@ -2,7 +2,7 @@ import argparse
 import subprocess
 import sys
 
-from scripts import util
+from simple_chat import util
 
 
 def parse_args():
