@@ -4,7 +4,7 @@ from simple_chat.database import sql_db as db
 from simple_chat.db.models.base_model import BaseModel
 
 
-class MessagesLikes(BaseModel):
+class MessageLikes(BaseModel):
     # Properties
     # None
 
