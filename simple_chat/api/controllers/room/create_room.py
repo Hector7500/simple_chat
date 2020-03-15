@@ -44,7 +44,7 @@ class CreateRoom(Resource):
 
         msg = {
             'message': f'Successfully created room',
-            'room_uuid': new_room.uuid,
+            'room_uuid': new_room.uuid_str,
         }
 
         return helper.successful_post_response(msg)

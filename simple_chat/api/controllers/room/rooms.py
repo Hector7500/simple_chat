@@ -30,7 +30,7 @@ class RoomList(Resource):
 
         rooms_data = [{
             'room_name': room.name,
-            'room_uuid': room.uuid,
+            'room_uuid': room.uuid_str,
             'room_users': room.user_list
         } for room in rooms]
 

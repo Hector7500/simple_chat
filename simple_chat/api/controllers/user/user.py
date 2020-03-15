@@ -73,7 +73,7 @@ class User(Resource):
 
         users_data = [{
             'user_name': user.name,
-            'user_uuid': user.uuid
+            'user_uuid': user.uuid_str
         } for user in users]
 
         return helper.response(users_data, 201)

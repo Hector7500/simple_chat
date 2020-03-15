@@ -53,7 +53,7 @@ class Message(Resource):
             'message': f'User successfully sent message',
             'user_uuid': json_data["user_uuid"],
             'room_uuid': json_data['room_uuid'],
-            'message_uuid': json_data["message_uuid"]
+            'message_uuid': new_message.uuid_str
         }
 
         return helper.successful_post_response(msg)
