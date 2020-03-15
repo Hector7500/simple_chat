@@ -22,7 +22,6 @@ class RoomUsers(BaseModel):
     # Indexes
     # None
 
-
     __tablename__ = 'room_users'
 
     # =========

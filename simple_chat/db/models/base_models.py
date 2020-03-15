@@ -1,5 +1,4 @@
-from sqlalchemy import text
-from sqlalchemy import func
+from sqlalchemy import func, text
 from sqlalchemy.dialects.postgresql import UUID
 
 from simple_chat.database import sql_db as db

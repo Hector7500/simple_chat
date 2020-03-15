@@ -4,40 +4,43 @@ from werkzeug.exceptions import BadRequest
 
 from simple_chat.api.controllers import helper
 from simple_chat.database import sql_db as db
-from simple_chat.db.models import Messages, Rooms
+from simple_chat.db.models import Rooms
 
 
 class RoomMessages(Resource):
-    def post(self):
+    def get(self):
+        """
+            GET endpoint for room data
+            ---
+            description: Get all messages and likes associated with the message
+            parameters:
+              - name: room_uuid
+                in: path
+                type: string
+                required: true
+                description: used as query param
+            definitions:
+              User:
+                type: object
+                properties:
+                  user:
+                    name: string
+            responses:
+              201:
+                description: Get all messages and likes associated with the message in list
+        """
         try:
-            json_data = request.get_json(force=True)
+            room_uuid = request.args['room_uuid']
 
         except BadRequest:
-            print('No json data providing name or description')
 
-            return helper.create_no_json_response()
+            return helper.create_missing_fields_response('room_uuid')
 
-        new_message = Messages(message=json_data['message'], user_id=json_data['user_id'], room_id=['room_id'])
+        room = db.session.query(Rooms).filter(Rooms.uuid == room_uuid).first()
+        room_data = {
+            'message': room.message_data,
+            'likes': room.like_data,
 
-        db.session.add(new_message)
-        db.session.commit()
-
-        return helper.successful_post_response('room')
-
-    def get(self):
-        try:
-            room_id = int(request.args['room_id'])
-
-        except Exception:
-
-            return helper.create_missing_fields_response('room_id')
-
-        room = db.session.query(Rooms).filter(Rooms.id == room_id)
-        room_data = [
-            {
-                'message': data.message_data,
-                'likes': data.like_data,
-
-            } for data in room]
+        }
 
         return helper.response(room_data, 200)

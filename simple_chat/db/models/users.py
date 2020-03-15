@@ -24,11 +24,8 @@ class Users(UUIDBaseModel):
     # Indexes
     user_index = Index('user_index', 'uuid')
 
-
-
     __tablename__ = 'users'
     __table_args__ = (user_index,)
-
 
     # =========
     # Methods ===

@@ -4,21 +4,21 @@ from werkzeug.exceptions import BadRequest
 
 from simple_chat.api.controllers import helper
 from simple_chat.database import sql_db as db
-from simple_chat.db.models import Users
+from simple_chat.db.models import Rooms
 
 
-class User(Resource):
+class CreateRoom(Resource):
     def post(self):
         """
-            POST endpoint for creating new users
+            POST endpoint for room messages
             ---
-            description: create a new user
+            description: Post a new message to the room
             parameters:
               - name: name
                 in: path
                 type: string
                 required: true
-                description: Used in request body
+                description: room's name passed in the request body
             definitions:
               User:
                 type: object
@@ -27,7 +27,7 @@ class User(Resource):
                     type: string
             responses:
               201:
-                description: Creates a new user returns UUID
+                description: Created new room returns UUID
         """
         try:
             json_data = request.get_json(force=True)
@@ -37,9 +37,11 @@ class User(Resource):
 
             return helper.create_no_json_response()
 
-        new_user = Users(name=json_data['name'])
+        new_room = Rooms(name=json_data['name'])
 
-        db.session.add(new_user)
+        db.session.add(new_room)
         db.session.commit()
 
-        return helper.successful_post_response(f'Successfully created user: {new_user.uuid}')
+        return helper.successful_post_response(f'Successfully created room {new_room.uuid}')
+
+

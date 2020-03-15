@@ -10,8 +10,8 @@ def create_no_json_response():
     return response(data, 400)
 
 
-def successful_post_response(data_type: str) -> Any:
-    msg = f'Succesfully Created {data_type}'
+def successful_post_response(data_msg: str) -> Any:
+    msg = f'{data_msg}'
     data = {'status': 201, 'message': msg}
 
     return response(data, 201)
