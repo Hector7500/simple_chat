@@ -1,8 +1,10 @@
+from sqlalchemy import Index
+
 from simple_chat.database import sql_db as db
-from simple_chat.db.models.base_model import BaseModel
+from simple_chat.db.models.base_models import UUIDBaseModel
 
 
-class Messages(BaseModel):
+class Messages(UUIDBaseModel):
     # Properties
     message = db.Column(db.Text)
 
@@ -19,7 +21,11 @@ class Messages(BaseModel):
     # 1:1
     # None
 
+    # Indexes
+    message_index = Index('message_index', 'uuid')
+
     __tablename__ = 'messages'
+    __table_args__ = (message_index,)
 
     # =========
     # Methods ===

@@ -11,3 +11,5 @@ marshmallow==3.0.0rc8
 marshmallow-oneofschema==2.0.0.post0
 marshmallow-sqlalchemy==0.17.0
 psycopg2-binary
+flasgger
+apispec

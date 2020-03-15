@@ -1,10 +1,11 @@
+from sqlalchemy import Index
 from sqlalchemy.ext.hybrid import hybrid_property
 
 from simple_chat.database import sql_db as db
-from simple_chat.db.models.base_model import BaseModel
+from simple_chat.db.models.base_models import UUIDBaseModel
 
 
-class Users(BaseModel):
+class Users(UUIDBaseModel):
     # Properties
     name = db.Column(db.String)
 
@@ -20,7 +21,14 @@ class Users(BaseModel):
     # 1:1
     # None
 
+    # Indexes
+    user_index = Index('user_index', 'uuid')
+
+
+
     __tablename__ = 'users'
+    __table_args__ = (user_index,)
+
 
     # =========
     # Methods ===

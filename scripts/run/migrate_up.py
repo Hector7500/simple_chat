@@ -4,6 +4,7 @@ from alembic import command  # type: ignore
 from alembic.config import Config  # type: ignore
 
 from simple_chat import util
+from simple_chat.db import db_util
 
 
 def parse_args():
@@ -26,6 +27,9 @@ def main():
     alembic_config = Config(alembic_path)
     alembic_config.set_main_option('sqlalchemy.url', util.get_db_str())
     alembic_config.set_main_option('script_location', str(migrations_path))
+    print('Installing DB Extensions')
+    db_util.install_db_extensions()
+    print('Installed db extensions')
     print('Updating Database Schemas')
     command.upgrade(alembic_config, 'head')
     print('Updated database schemas')

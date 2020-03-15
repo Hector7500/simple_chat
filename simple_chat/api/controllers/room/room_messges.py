@@ -1,12 +1,13 @@
 from flask import request
+from flask_restful import Resource
 from werkzeug.exceptions import BadRequest
 
 from simple_chat.api.controllers import helper
 from simple_chat.database import sql_db as db
-from simple_chat.db.models import Rooms, Messages
+from simple_chat.db.models import Messages, Rooms
 
 
-class RoomMessage:
+class RoomMessages(Resource):
     def post(self):
         try:
             json_data = request.get_json(force=True)
@@ -16,9 +17,9 @@ class RoomMessage:
 
             return helper.create_no_json_response()
 
-        new_room = Messages(message=json_data['message'], user_id=json_data['user_id'], room_id=['room_id'])
+        new_message = Messages(message=json_data['message'], user_id=json_data['user_id'], room_id=['room_id'])
 
-        db.session.add(new_room)
+        db.session.add(new_message)
         db.session.commit()
 
         return helper.successful_post_response('room')
@@ -36,7 +37,6 @@ class RoomMessage:
             {
                 'message': data.message_data,
                 'likes': data.like_data,
-
 
             } for data in room]
 

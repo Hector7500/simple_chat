@@ -1,5 +1,5 @@
 from simple_chat.database import sql_db as db
-from simple_chat.db.models.base_model import BaseModel
+from simple_chat.db.models.base_models import BaseModel
 
 
 class RoomUsers(BaseModel):
@@ -18,6 +18,10 @@ class RoomUsers(BaseModel):
 
     # 1:1
     # None
+
+    # Indexes
+    # None
+
 
     __tablename__ = 'room_users'
 

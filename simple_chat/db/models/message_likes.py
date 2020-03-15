@@ -1,7 +1,7 @@
 from sqlalchemy.ext.hybrid import hybrid_property
 
 from simple_chat.database import sql_db as db
-from simple_chat.db.models.base_model import BaseModel
+from simple_chat.db.models.base_models import BaseModel
 
 
 class MessageLikes(BaseModel):
@@ -21,7 +21,10 @@ class MessageLikes(BaseModel):
     # 1:1
     # None
 
-    __tablename__ = 'messages'
+    # Indexes
+    # None
+
+    __tablename__ = 'messages_likes'
 
     # =========
     # Methods ===

@@ -1,12 +1,34 @@
 from flask import request
+from flask_restful import Resource
 from werkzeug.exceptions import BadRequest
+
 from simple_chat.api.controllers import helper
-from simple_chat.db.models import Users
 from simple_chat.database import sql_db as db
+from simple_chat.db.models import Users
 
 
-class User:
+class User(Resource):
     def post(self):
+        """
+            POST endpoint for creating new users
+            ---
+            description: POST endpoint for creating new users
+            parameters:
+              - name: name
+                in: path
+                type: string
+                required: true
+                description: Used in request body
+            definitions:
+              User:
+                type: object
+                properties:
+                  user:
+                    name: string
+            responses:
+              201:
+                description: Creates a new user
+        """
         try:
             json_data = request.get_json(force=True)
 
@@ -23,6 +45,26 @@ class User:
         return helper.successful_post_response('user')
 
     def get(self):
+        """
+            GET endpoint for getting details of user
+            ---
+            description: GET endpoint for getting details of user
+            parameters:
+              - name: user_id
+                in: path
+                type: int
+                required: true
+                description: Used as query param
+            definitions:
+              User:
+                type: object
+                properties:
+                  user:
+                    name: string
+            responses:
+              201:
+                description: Creates a new user
+        """
         try:
             user_id = int(request.args['user_id'])
 
@@ -38,8 +80,3 @@ class User:
         }
 
         return helper.response(user_data, 200)
-
-
-
-
-

@@ -1,11 +1,13 @@
 from flask import request
+from flask_restful import Resource
 from werkzeug.exceptions import BadRequest
 
 from simple_chat.api.controllers import helper
 from simple_chat.database import sql_db as db
 from simple_chat.db.models import MessageLikes
 
-class LikeMessage:
+
+class LikeMessage(Resource):
     def post(self):
         try:
             json_data = request.get_json(force=True)
