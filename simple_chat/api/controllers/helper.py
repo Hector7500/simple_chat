@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Dict
 
 from flask import jsonify
 
@@ -10,11 +10,11 @@ def create_no_json_response():
     return response(data, 400)
 
 
-def successful_post_response(data_msg: str) -> Any:
-    msg = f'{data_msg}'
-    data = {'status': 201, 'message': msg}
+def successful_post_response(data_dict: Dict) -> Any:
 
-    return response(data, 201)
+    data_dict['status'] = 201
+
+    return response(data_dict, 201)
 
 
 def create_missing_fields_response(param_str):

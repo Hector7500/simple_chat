@@ -42,7 +42,12 @@ class User(Resource):
         db.session.add(new_user)
         db.session.commit()
 
-        return helper.successful_post_response(f'Successfully created user: {new_user.uuid}')
+        msg = {
+            'message': f'User successfully created',
+            'user_uuid': new_user.uuid
+        }
+
+        return helper.successful_post_response(msg)
 
     def get(self):
         """

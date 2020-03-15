@@ -2,10 +2,9 @@ from flask import request
 from flask_restful import Resource
 from werkzeug.exceptions import BadRequest
 
-from simple_chat.api.controllers import helper
+from simple_chat.api.controllers import helper, util as controller_util
 from simple_chat.database import sql_db as db
 from simple_chat.db.models import Messages
-from simple_chat.api.controllers import util as controller_util
 
 
 class Message(Resource):
@@ -50,7 +49,11 @@ class Message(Resource):
         db.session.add(new_message)
         db.session.commit()
 
-        msg = f'User {json_data["user_uuid"]} successfully sent message to room {json_data["room_uuid"]}'
+        msg = {
+            'message': f'User successfully sent message',
+            'user_uuid': json_data["user_uuid"],
+            'room_uuid': json_data['room_uuid'],
+            'message_uuid': json_data["message_uuid"]
+        }
 
         return helper.successful_post_response(msg)
-

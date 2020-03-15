@@ -42,6 +42,11 @@ class CreateRoom(Resource):
         db.session.add(new_room)
         db.session.commit()
 
-        return helper.successful_post_response(f'Successfully created room {new_room.uuid}')
+        msg = {
+            'message': f'Successfully created room',
+            'room_uuid': new_room.uuid,
+        }
+
+        return helper.successful_post_response(msg)
 
 

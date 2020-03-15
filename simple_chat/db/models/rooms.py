@@ -46,7 +46,7 @@ class Rooms(UUIDBaseModel):
 
             for user_room in self.users:
                 users_list.append({
-                    "nmae": user_room.user.name,
+                    "name": user_room.user.name,
                     "user_uuid": user_room.user.uuid_str,
                 })
 

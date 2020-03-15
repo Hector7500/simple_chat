@@ -43,5 +43,10 @@ class JoinRoom(Resource):
         db.session.add(new_user_in_room)
         db.session.commit()
 
-        return helper.successful_post_response(f'User {json_data["user_uuid"]} successfully joined room '
-                                               f'{json_data["room_uuid"]}')
+        msg = {
+            'message': f'user successfully joined room',
+            'room_uuid':json_data['room_uuid'],
+            'user_uuid': json_data['user_uuid']
+        }
+
+        return helper.successful_post_response(msg)

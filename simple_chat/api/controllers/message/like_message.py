@@ -46,5 +46,10 @@ class LikeMessage(Resource):
         db.session.add(new_like)
         db.session.commit()
 
-        return helper.successful_post_response(f'User {json_data["user_uuid"]} liked message '
-                                               f'{json_data["message_uuid"]}')
+        msg = {
+            'message': f'User successfully liked message',
+            'user_uuid': json_data["user_uuid"],
+            'message_uuid': json_data["message_uuid"]
+        }
+
+        return helper.successful_post_response(msg)
