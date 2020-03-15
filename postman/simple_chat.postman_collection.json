@@ -1,0 +1,503 @@
+{
+	"info": {
+		"_postman_id": "5f261a2b-14c2-4012-a6d3-9cea112156b4",
+		"name": "simple_chat",
+		"description": "All simple chat endpoints\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create_new_user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d171db66-26af-4605-a02d-122462ef8bc6",
+						"exec": [
+							"pm.globals.set(\"simulation_id\", pm.response.json().simulation_id)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2ff73692-d35f-48a3-a5ee-27e8f00a1bc1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "IwRh5M808P54Ptl2T5vj"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"John\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v0_1_0/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v0_1_0",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_users",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d171db66-26af-4605-a02d-122462ef8bc6",
+						"exec": [
+							"pm.globals.set(\"simulation_id\", pm.response.json().simulation_id)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2ff73692-d35f-48a3-a5ee-27e8f00a1bc1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "IwRh5M808P54Ptl2T5vj"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v0_1_0/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v0_1_0",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create_new_room",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d171db66-26af-4605-a02d-122462ef8bc6",
+						"exec": [
+							"pm.globals.set(\"simulation_id\", pm.response.json().simulation_id)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2ff73692-d35f-48a3-a5ee-27e8f00a1bc1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "IwRh5M808P54Ptl2T5vj"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"general chat room\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v0_1_0/create-room",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v0_1_0",
+						"create-room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_rooms",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d171db66-26af-4605-a02d-122462ef8bc6",
+						"exec": [
+							"pm.globals.set(\"simulation_id\", pm.response.json().simulation_id)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2ff73692-d35f-48a3-a5ee-27e8f00a1bc1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "IwRh5M808P54Ptl2T5vj"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v0_1_0/rooms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v0_1_0",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "join_room",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d171db66-26af-4605-a02d-122462ef8bc6",
+						"exec": [
+							"pm.globals.set(\"simulation_id\", pm.response.json().simulation_id)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2ff73692-d35f-48a3-a5ee-27e8f00a1bc1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "IwRh5M808P54Ptl2T5vj"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"user_uuid\": \"94f6de1f-bc5d-4607-a10f-00a87ffb0cbf\",\n\t\"room_uuid\": \"814f9ece-57ef-4fce-a926-28e074dd4c88\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v0_1_0/join-room",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v0_1_0",
+						"join-room"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send_message_to_room",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d171db66-26af-4605-a02d-122462ef8bc6",
+						"exec": [
+							"pm.globals.set(\"simulation_id\", pm.response.json().simulation_id)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2ff73692-d35f-48a3-a5ee-27e8f00a1bc1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "IwRh5M808P54Ptl2T5vj"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"message\": \"test message feature for room\",\n\t\"user_uuid\": \"d58df18d-7aef-4522-bd29-f1b474afb9ff\",\n\t\"room_uuid\": \"21298898-3b6e-4e0d-ad2e-eebc3cbcc6ec\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v0_1_0/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v0_1_0",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "like_message",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d171db66-26af-4605-a02d-122462ef8bc6",
+						"exec": [
+							"pm.globals.set(\"simulation_id\", pm.response.json().simulation_id)"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "2ff73692-d35f-48a3-a5ee-27e8f00a1bc1",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "IwRh5M808P54Ptl2T5vj"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"message_uuid\": \"123a8eb9-9ee4-46c9-b94f-43af1bd9a3ab\",\n\t\"user_uuid\": \"ae679705-605c-4aa9-a565-ee23800146d3\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v0_1_0/like-message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v0_1_0",
+						"like-message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_all_room_messages",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/v0_1_0/messages?room_uuid=21298898-3b6e-4e0d-ad2e-eebc3cbcc6ec",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"v0_1_0",
+						"messages"
+					],
+					"query": [
+						{
+							"key": "room_uuid",
+							"value": "21298898-3b6e-4e0d-ad2e-eebc3cbcc6ec"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
