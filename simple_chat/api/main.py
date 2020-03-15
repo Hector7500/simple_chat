@@ -6,7 +6,8 @@ from flask_restful import Api
 from simple_chat.api.controllers.message.like_message import LikeMessage
 from simple_chat.api.controllers.message.message import Message
 from simple_chat.api.controllers.room.create_room import CreateRoom
-from simple_chat.api.controllers.room.rooms import Rooms
+from simple_chat.api.controllers.room.join_room import JoinRoom
+from simple_chat.api.controllers.room.rooms import RoomList
 from simple_chat.api.controllers.room.room_messges import RoomMessages
 from simple_chat.api.controllers.user.user import User
 
@@ -43,7 +44,8 @@ rest_api = Api(app_v0_1_0)
 
 rest_api.add_resource(User, f'/users', endpoint='users')
 rest_api.add_resource(CreateRoom, f'/create-room', endpoint='create-room')
-rest_api.add_resource(Rooms, f'/rooms', endpoint='rooms')
+rest_api.add_resource(JoinRoom, f'/join-room', endpoint='join-rooms')
+rest_api.add_resource(RoomList, f'/rooms', endpoint='rooms')
 rest_api.add_resource(RoomMessages, f'/messages', endpoint='messages')
 rest_api.add_resource(Message, f'/message', endpoint='message')
 rest_api.add_resource(LikeMessage, f'/like-message', endpoint='message-likes')

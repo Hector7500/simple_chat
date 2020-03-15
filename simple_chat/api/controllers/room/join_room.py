@@ -36,7 +36,7 @@ class JoinRoom(Resource):
             return helper.create_no_json_response()
 
         user_id = controller_util.get_user_id(json_data['user_uuid'])
-        room_id = controller_util.get_user_id(json_data['room_uuid'])
+        room_id = controller_util.get_room_id(json_data['room_uuid'])
 
         new_user_in_room = RoomUsers(user_id=user_id, room_id=room_id)
 

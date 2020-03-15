@@ -9,12 +9,12 @@ def get_user_id(user_uuid: str) -> int:
 
 
 def get_room_id(room_uuid: str) -> int:
-    room_id = db.session.query(Users.id).filter(Rooms.uuid == room_uuid).scalar()
+    room_id = db.session.query(Rooms.id).filter(Rooms.uuid == room_uuid).scalar()
 
     return room_id
 
 
 def get_message_id(message_uuid: str) -> int:
-    message_id = db.session.query(Users.id).filter(Messages.uuid == message_uuid).scalar()
+    message_id = db.session.query(Messages.id).filter(Messages.uuid == message_uuid).scalar()
 
     return message_id

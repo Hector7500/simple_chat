@@ -13,7 +13,8 @@ class MessageLikes(BaseModel):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     # N:1
-    # users = db.relationship("Users", back_populates="likes", foreign_keys=user_id)
+    users = db.relationship("Users", back_populates="likes", foreign_keys=user_id)
+    messages = db.relationship("Messages", back_populates="likes", foreign_keys=message_id)
 
     # 1:N
     # None
@@ -31,10 +32,3 @@ class MessageLikes(BaseModel):
     # =========
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-
-    @hybrid_property
-    def user_name(self):
-        if self.users:
-            return [user.name for user in self.users]
-
-        return ''

@@ -1,4 +1,7 @@
+from typing import List
+
 from sqlalchemy import Index
+from sqlalchemy.ext.hybrid import hybrid_property
 
 from simple_chat.database import sql_db as db
 from simple_chat.db.models.base_models import UUIDBaseModel
@@ -13,10 +16,11 @@ class Messages(UUIDBaseModel):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
     # N:1
-    # None
+    user = db.relationship("Users", back_populates="messages", foreign_keys=user_id)
+    room = db.relationship("Rooms", back_populates="messages", foreign_keys=room_id)
 
     # 1:N
-    # None
+    likes = db.relationship("MessageLikes", back_populates="messages")
 
     # 1:1
     # None
@@ -32,3 +36,23 @@ class Messages(UUIDBaseModel):
     # =========
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+
+    @hybrid_property
+    def uuid_str(self) -> str:
+        return str(self.uuid)
+
+    @hybrid_property
+    def like_list(self) -> List:
+
+        if self.likes:
+            likes: List = []
+
+            for like in self.likes:
+                likes.append({
+                    "user_name": like.users.name,
+                    "user_uuid": like.users.uuid_str
+                })
+
+            return likes
+
+        return []

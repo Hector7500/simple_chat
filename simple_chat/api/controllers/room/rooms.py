@@ -5,7 +5,7 @@ from simple_chat.database import sql_db as db
 from simple_chat.db.models import Rooms
 
 
-class Rooms(Resource):
+class RoomList(Resource):
     def get(self):
         """
             GET endpoint for all rooms

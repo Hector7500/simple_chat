@@ -1,3 +1,5 @@
+from typing import List
+
 from sqlalchemy import Index
 from sqlalchemy.ext.hybrid import hybrid_property
 
@@ -13,10 +15,11 @@ class Users(UUIDBaseModel):
     # None
 
     # N:1
-    # None
+    rooms = db.relationship("RoomUsers", back_populates="user")
+    messages = db.relationship("Messages", back_populates="user")
 
     # 1:N
-    # None
+    likes = db.relationship("MessageLikes", back_populates="users")
 
     # 1:1
     # None
@@ -34,8 +37,19 @@ class Users(UUIDBaseModel):
         super().__init__(**kwargs)
 
     @hybrid_property
-    def rooms_list(self):
-        if self.rooms:
-            return [room.name for room in self.rooms]
+    def uuid_str(self) -> str:
+        return str(self.uuid)
 
-        return ''
+    @hybrid_property
+    def rooms_list(self) -> List:
+        if self.rooms:
+            room_list: List = []
+            for room in self.rooms:
+                room_list.append({
+                    "name": room.name,
+                    "uuid": room.uuid_str
+                })
+
+            return room_list
+
+        return []

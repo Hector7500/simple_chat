@@ -29,6 +29,8 @@ class RoomMessages(Resource):
               201:
                 description: Get all messages and likes associated with the message in list
         """
+
+
         try:
             room_uuid = request.args['room_uuid']
 
@@ -37,10 +39,10 @@ class RoomMessages(Resource):
             return helper.create_missing_fields_response('room_uuid')
 
         room = db.session.query(Rooms).filter(Rooms.uuid == room_uuid).first()
-        room_data = {
-            'message': room.message_data,
-            'likes': room.like_data,
 
+        room_data = {
+            'users': room.user_list,
+            'messages': room.message_list
         }
 
         return helper.response(room_data, 200)

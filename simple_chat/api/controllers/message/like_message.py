@@ -38,13 +38,13 @@ class LikeMessage(Resource):
 
             return helper.create_no_json_response()
 
-        user_id = controller_util.get_user_id(json_data['user_id'])
-        room_id = controller_util.get_user_id(json_data['room_id'])
-        message_id = controller_util.get_user_id(json_data['message_id'])
+        user_id = controller_util.get_user_id(json_data['user_uuid'])
+        message_id = controller_util.get_message_id(json_data['message_uuid'])
 
-        new_like = MessageLikes(message=message_id, user_id=user_id, room_id=room_id)
+        new_like = MessageLikes(message_id=message_id, user_id=user_id)
 
         db.session.add(new_like)
         db.session.commit()
 
-        return helper.successful_post_response(f'User {json_data["user_id"]} liked message {json_data["message_id"]}')
+        return helper.successful_post_response(f'User {json_data["user_uuid"]} liked message '
+                                               f'{json_data["message_uuid"]}')

@@ -10,10 +10,11 @@ class RoomUsers(BaseModel):
     room_id = db.Column(db.Integer, db.ForeignKey('rooms.id'))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    # N:1
-    # None
-
     # 1:N
+    user = db.relationship("Users", back_populates="rooms", foreign_keys=user_id)
+    room = db.relationship("Rooms", back_populates="users", foreign_keys=room_id)
+
+    # N:1
     # None
 
     # 1:1

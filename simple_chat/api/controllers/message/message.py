@@ -44,7 +44,7 @@ class Message(Resource):
             return helper.create_no_json_response()
 
         user_id = controller_util.get_user_id(json_data['user_uuid'])
-        room_id = controller_util.get_user_id(json_data['room_uuid'])
+        room_id = controller_util.get_room_id(json_data['room_uuid'])
 
         new_message = Messages(message=json_data['message'], user_id=user_id, room_id=room_id)
         db.session.add(new_message)

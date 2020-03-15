@@ -43,3 +43,32 @@ class User(Resource):
         db.session.commit()
 
         return helper.successful_post_response(f'Successfully created user: {new_user.uuid}')
+
+    def get(self):
+        """
+            GET endpoint for all rooms
+            ---
+            description: Get all rooms
+            definitions:
+              Room:
+                type: object
+                properties:
+                  room_name:
+                    type: string
+                    description: name of room
+                  room_uuid:
+                    type: string
+                    description: room uuid
+            responses:
+              201:
+                description: Get all rooms ie. name and uuid
+        """
+
+        users = db.session.query(Users).all()
+
+        users_data = [{
+            'user_name': user.name,
+            'user_uuid': user.uuid
+        } for user in users]
+
+        return helper.response(users_data, 201)
