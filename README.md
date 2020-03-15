@@ -3,6 +3,7 @@ Simple Chat API developed in Python and PostgreSQL
 
 ## Prerequisites 
 * To use the API I made a postman collection [Postman Scripts](https://github.com/Hector7500/simple_chat/blob/master/postman/simple_chat.postman_collection.json)
+which can just be imported in the postman applicaiton. 
 * You will also need to have PostgreSQL version > 9.1 (This is due to UUID) I used PostgreSQL version 11
 
 
