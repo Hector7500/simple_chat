@@ -24,6 +24,7 @@ Simple Chat API developed in Python and PostgreSQL
 you can go to the following link `http://localhost:5000/apidocs/#/` to see the API this was maded with flasgger. 
 `localhost:5000` will change if you change the env vars in the dev.sh file.
 
-
 # Notes on API
-* You will need to pass the UUID's for the endpoint as the uuid will change for everyone.
+* You will need to pass the UUID's for the endpoint as the uuid will change for everyone. 
+* POST endpoint data is written in the request body. 
+* GET endpoint data is written in the request body. 
