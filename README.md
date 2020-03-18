@@ -13,7 +13,7 @@ which can just be imported in the postman applicaiton.
 
 1. run command `make venv`
   - this will install virtualvenv if not already installed and make a virtual env for you to source
-  - to source you can run the command `source simple_chat_env/bin/activate` *this assumes you have pyenv* if you dont have pyenv skip sourcing and skip to pip install
+  - to source you can run the command `source simple_chat_env/bin/activate` *this assumes you have pyenv* if you dont have pyenv skip sourcing and and jump to pip install
   - once sourced make sure to pip install the requirements
     - pip install -r requirements/prod.txt
     - pip install -r requirements/dev.txt
