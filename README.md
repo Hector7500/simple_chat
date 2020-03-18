@@ -17,6 +17,7 @@ which can just be imported in the postman applicaiton.
   - once sourced make sure to pip install the requirements
     - pip install -r requirements/prod.txt
     - pip install -r requirements/dev.txt
+  - if you run into issues with module names you need to source your pythonpath
 2. Start postgres sever
   - create a db with whatever name you want but if not changed it will need to be `simple_chat_db`
 3.run command `make db-migrate-up`
